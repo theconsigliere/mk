@@ -699,6 +699,10 @@ button {
         @media (min-width: #{$screen-lg}) {
             font-size: 8vw;
         }
+
+        @media (min-width: #{$screen-xxl}) {
+            font-size: 7vw;
+        }
     }
 }
 
