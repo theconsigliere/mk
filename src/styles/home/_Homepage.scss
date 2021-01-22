@@ -117,6 +117,7 @@ body {
 footer {
     width: 100%;
     margin-top: 10vh;
+
 }
 
 .footer__inner {
@@ -211,7 +212,7 @@ footer {
     .div1 { grid-area: 1 / 1 / 2 / 3;
         display: flex;
         align-items: flex-end;
-       
+        margin-bottom: 0;
 
         @media (min-width: #{$screen-lg}) {
             grid-area: 1 / 2 / 2 / 5;
@@ -255,9 +256,13 @@ footer {
 
     max-width: 100%;
     object-fit: cover;
-    margin: 2em auto;
+    margin: 1em auto;
     display: block;
     padding-top: 0;
+
+    @media (min-width: #{$screen-sm}) {
+        margin: 2em auto;
+    }
 
     @media (min-width: #{$screen-lg}) {
         padding-top: 2em;
@@ -276,6 +281,7 @@ footer {
     margin: 0;
     position: relative;
     overflow: hidden;
+    letter-spacing: 0px;
 
     @media (min-width: #{$screen-lg}) {
         font-size: 11vw;
@@ -360,7 +366,7 @@ button {
     font-size: 15vw;
     margin: 0;
     line-height: 1;
-
+    letter-spacing: 0px;
 
     @media (min-width: #{$screen-lg}) {
         font-size: 10vw;
@@ -434,9 +440,7 @@ button {
 
 
 
-.rw_shape-box {
-    margin-bottom: 2em;
-}
+
 
 #work {
     margin-top: 2em;
@@ -449,6 +453,7 @@ button {
     margin: 0 auto;
     padding: 2em 0;
   //  border-bottom: 2px solid var(--white);
+  position: relative;
 
     @media (min-width: #{$screen-lg}) {
         @include end-between;
@@ -457,6 +462,11 @@ button {
 
     .rw-item {
         max-width: 100%;
+        margin-bottom: 20px;
+
+        @media (min-width: #{$screen-md}) {
+            margin-bottom: 0;
+        }
 
         @media (min-width: #{$screen-lg}) {
             max-width: 45%;
@@ -466,27 +476,63 @@ button {
             font-size: 15vw;
             line-height: 1;
             margin-bottom: 0;
+            letter-spacing: 0px;
 
             @media (min-width: #{$screen-lg}) {
                 font-size: 8vw;
             }
         }
+
+        .rw_shape-box {
+            margin-bottom: 2em;
+            position: absolute;
+            width: 6em;
+            top: 0;
+        
+            @media (min-width: #{$screen-lg}) {
+                padding-right: 2em;
+                padding-top: 0;
+                position: relative;
+                width: initial;
+            }
+
+            svg {
+                width:100%;
+                height: auto;
+            }
+        }
     }
+}
+
+.hero, .about-section {
+    overflow: hidden;
 }
 
 .rw-item-end {
     @include end-center-column;
+    margin-bottom: 0 !important;
 }
 
 .work-item {
     margin: 10vh 0;
     position: relative;
 
+    @media (min-width: #{$screen-md}) {
+        margin-top: 10vh;
+    }
+
     .rw_shape-box {
         position: absolute;
         right: 5%;
-        bottom: 0;
+        bottom: -5%;
         margin-bottom: 0;
+        
+
+        @media (min-width: #{$screen-md}) {
+            bottom: 0;
+        }
+
+    
     }
 
     .work-item__inner {
@@ -516,7 +562,7 @@ button {
 
 
             .wi-item-iiner {
-                    padding: 10px 0;
+                    padding: 2em 0;
                     max-width: 100%;
 
                     @media (min-width: #{$screen-lg}) {
@@ -528,9 +574,11 @@ button {
                     font-size: 15vw;
                     margin: 0;
                     line-height: 1;
+                    margin-bottom: 10px;
 
                     @media (min-width: #{$screen-lg}) {
                         font-size: 5vw;
+                        margin-bottom: 0;
                     }
                 }
             }
@@ -542,13 +590,23 @@ button {
                
 
                 .tag-item {
-                    margin: 0 1em;
+                    margin: 0 .5em;
                    @include center-center;
+
+                   @media (min-width: #{$screen-md}) {
+                    margin: 0 1em;
+
+                }
 
 
                    p {
                        margin: 0;
-                       font-size: 1rem;
+                       font-size: .8rem;
+
+                       @media (min-width: #{$screen-md}) {
+                        font-size: 1rem;
+
+                    }
                    }
 
                     &:first-of-type {
@@ -560,12 +618,20 @@ button {
                     }
 
                     .circle {
-                        width: 10px;
-                        height: 10px;
+                        width: 7px;
+                        height: 7px;
                         display: block;
                         background: var(--white);
                         transform: rotate(45deg);
-                            margin-right: 15px;
+                            margin-right: 7px;
+
+                            
+                       @media (min-width: #{$screen-md}) {
+                        margin-right: 15px;
+                        width: 10px;
+                        height: 10px;
+
+                    }
                     }
                 }
             }
@@ -604,8 +670,12 @@ button {
 .sl-item {
     margin: 0;
     line-height: 1.2;
-    font-size: 12vw;
+    font-size: 8vw;
     margin-top: 1em;
+
+    @media (min-width: #{$screen-sm}) { 
+        font-size: 12vw;
+    }
 
     @media (min-width: #{$screen-lg}) { 
         font-size: 5vw;
@@ -617,8 +687,12 @@ button {
 }
 
 .skills {
-    min-height: 100vh;
+    min-height: inherit;
     @include center-center;
+
+    @media (min-width: #{$screen-md}) { 
+        min-height: 100vh;
+    }
 }
 
 
@@ -636,8 +710,13 @@ button {
     }
 
     p {
-        max-width: 80%;
-        margin: 0 auto;
+        max-width: 95%;
+        margin: 10px auto;
+
+        @media (min-width: #{$screen-md}) { 
+            max-width: 80%;
+            margin: 0 auto;
+        }
     }
 
      .c-diamond {
@@ -650,7 +729,7 @@ button {
         top: 50%;
         left: 50%;
         border: 2px solid var(--white);
-        opacity: 0.1;
+        opacity: 0.1 ;
 
         @media (min-width: #{$screen-lg}) {
             width: 70vh;
@@ -690,11 +769,17 @@ button {
         text-align: center;
         max-width: 90%;
         margin: 0 auto;
+
+        @media (min-width: #{$screen-xl}) {
+            max-width: 100%;
+        }
     }
 
     .ch_title {
         font-size: 15vw;
-        margin-bottom: 0;
+        margin-bottom: 10px;
+        letter-spacing: 0px;
+        line-height: 1;
 
         @media (min-width: #{$screen-lg}) {
             font-size: 8vw;
@@ -715,5 +800,13 @@ button {
         &:hover {
             opacity: 0.6 !important;
         }
+    }
+}
+
+div2.text-holder {
+    margin-bottom: 0;
+
+    @media (min-width: #{$screen-lg}) {
+        margin-bottom: inherit;
     }
 }

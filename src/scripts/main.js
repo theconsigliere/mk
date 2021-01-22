@@ -121,21 +121,21 @@ function heroAnimation () {
               defaults: {
                 //  ease: "back.inOut(1.7)"
                 ease:'power4.out'
+              },
+              // add scrolltrigger to timelinex
+              scrollTrigger:{
+                  trigger: hero,
+                  start:"center bottom",
+                  scroller: scrollContainer,
+              //  end:"bottom bottom",
+               //   markers: true
               }
-              // // add scrolltrigger to timelinex
-              // scrollTrigger:{
-              //     trigger: hero,
-              //     start:"center bottom",
-              //     scroller: scrollContainer,
-              // //  end:"bottom bottom",
-              //  //   markers: true
-              // }
           });
       
       
           timeline
                .to(heroNameChars, { duration: 1.4, ease: "power4.out" , yPercent: 0, autoAlpha: 1, stagger: 0.1, rotation:0 }, 0)
-               .to(button, { rotation: 30*2.5, duration: 1, ease: 'none', scrollTrigger: { scrub:true } }, 0)
+               .to(button, { rotation: 360*5, duration: 1, ease: 'none', scrollTrigger: { scrub: true } }, 0)
                .to([subtitle, desc], { duration: 1.2 , ease: "power4.in", yPercent: 0, stagger: 0.2 }, .2)
                .to([mask, imageBlock], {xPercent: 0, duration: 1.2}, 0.8)
                .to(image, {duration: 2.5, scale: 1 }, 1.1)
@@ -329,7 +329,7 @@ function contactAnimation () {
   const desc = gsap.utils.toArray(contact.querySelectorAll('p, .cc_email, .link-menu a'))
 
   gsap.set(chChars, {yPercent: 110, autoAlpha: 0, rotation: -10})
-  gsap.set(diamond, { scale: 0.1, autoAlpha: 0})
+  gsap.set(diamond, { scale: 0.1 })
   gsap.set(desc, { yPercent: 50, autoAlpha: 0})
 
   let timeline = gsap.timeline({
@@ -351,7 +351,7 @@ function contactAnimation () {
 
 timeline
       .to(chChars, { duration: 2.5, ease: "power4.out" , yPercent: 0, autoAlpha: 1, stagger: 0.1, rotation:0 }, 0)
-      .to(diamond, {scale:1, duration: 2, ease: "back.inOut(1.7)", autoAlpha:1 }, 0)
+      .to(diamond, {scale:1, duration: 2, ease: "back.inOut(1.7)" }, 0)
       .to(desc, {yPercent: 0, autoAlpha: 1,  duration:0.8, stagger:0.1 }, 0.6)
 
 }
