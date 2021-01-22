@@ -1,0 +1,280 @@
+// Typography
+// ––––––––––––––––––––––––––––––––––––––––––––––––––
+
+@import url("https://use.typekit.net/xez0fcz.css");
+  
+  @font-face {
+    font-family: "DX Sitrus";
+   // font-display: swap;
+    src: url('./fonts/dxsitrus-expanded-webfont.woff2') format("woff2");
+    src: url('./fonts/dxsitrus-expanded-webfont.woff') format("woff");
+  }
+  
+  // @import url(//db.onlinewebfonts.com/c/30a71dcf9a1c39558ca4e97c92a4b2fa?family=Noe+Display+Bold);
+  
+  // @font-face {font-family: "Noe Display Bold"; src: url("//db.onlinewebfonts.com/t/30a71dcf9a1c39558ca4e97c92a4b2fa.eot"); src: url("//db.onlinewebfonts.com/t/30a71dcf9a1c39558ca4e97c92a4b2fa.eot?#iefix") format("embedded-opentype"), url("//db.onlinewebfonts.com/t/30a71dcf9a1c39558ca4e97c92a4b2fa.woff2") format("woff2"), url("//db.onlinewebfonts.com/t/30a71dcf9a1c39558ca4e97c92a4b2fa.woff") format("woff"), url("//db.onlinewebfonts.com/t/30a71dcf9a1c39558ca4e97c92a4b2fa.ttf") format("truetype"), url("//db.onlinewebfonts.com/t/30a71dcf9a1c39558ca4e97c92a4b2fa.svg#Noe Display Bold") format("svg"); }
+  
+  
+  // $text-font: 'Heebo', sans-serif
+  // $text-font: "IBM Plex Sans", sans-serif;
+  
+  $headline-font: "DX Sitrus", serif;
+  $text-font:  "neue-haas-grotesk-display", sans-serif;
+  $cursive-font: "DX Sitrus", serif;
+  
+  // Font Weight
+  
+  $type-bold: 700;
+  $type-mid: 500;
+  $type-thin: 400;
+  
+  .highlighted__text {
+    font-family: $cursive-font;
+    font-weight: 400;
+    font-style: normal;
+  }
+  
+  .inter {
+    font-weight: 100;
+    font-family: $text-font;
+    letter-spacing: 0;
+  }
+  
+  .small-title {
+    font-size: 1.2rem;
+    font-weight: 400;
+    color: #7d7d7d;
+  }
+  
+  b,
+  strong {
+    font-weight: bold;
+  }
+  
+  p {
+    margin-top: 0;
+  //  color: $color-secondary;
+  }
+  
+  .type-thin {
+    font-weight: $type-thin;
+  }
+  
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  .page_item a {
+    margin-bottom: 1rem;
+    margin-top: 0;
+    color: var(--white);
+    line-height: 1.5;
+    transition: all 0.3s ease-in-out;
+  
+    @media (min-width: #{$screen-sm}) {
+      margin-bottom: 1.5rem;
+    }
+  
+    @media (min-width: #{$screen-xl}) {
+      margin-bottom: 2rem;
+    }
+  }
+
+  .neue-haas {
+    font-family: $text-font;
+    font-weight: 400;
+  }
+  
+  .big-h1 {
+  // font-weight: $type-mid;
+    font-size: 3.5rem;
+  
+    @media (min-width: #{$screen-sm}) {
+      font-size: 5.4rem;
+    }
+  
+    @media (min-width: #{$screen-lg}) {
+      font-size: 7.6rem;
+    }
+  
+    @media (min-width: #{$screen-xxl}) {
+      font-size: 8rem;
+    }
+  }
+  
+  h1,
+  .h1 {
+    font-family: $headline-font;
+   // font-weight: $type-mid;
+    font-size: 3rem;
+  
+    @media (min-width: #{$screen-sm}) {
+      font-size: 4.4rem;
+    }
+  
+    @media (min-width: #{$screen-lg}) {
+      font-size: 4.6rem;
+    }
+  
+    @media (min-width: #{$screen-xxl}) {
+      font-size: 5.2rem;
+    }
+  }
+  
+  h2,
+  .h2 {
+    font-family: $headline-font;
+   // font-weight: $type-mid;
+    font-size: 1.8rem;
+  
+    @media (min-width: #{$screen-md}) {
+      font-size: 3rem;
+    }
+
+    @media (min-width: #{$screen-lg}) {
+      font-size: 3.2rem;
+    }
+  
+    @media (min-width: #{$screen-xl}) {
+      font-size: 3.8rem;
+    }
+  }
+  
+  h3,
+  .h3 {
+    font-family: $headline-font;
+   // font-weight: $type-mid;
+    font-size: 1.8rem;
+  
+    @media (min-width: #{$screen-md}) {
+      font-size: 2.1rem;
+    }
+  
+    @media (min-width: #{$screen-lg}) {
+      font-size: 2.2rem;
+    }
+  
+    @media (min-width: #{$screen-xl}) {
+      font-size: 2.5rem;
+    }
+  }
+  
+  h4,
+  .h4 {
+    font-size: 1.7rem;
+   // font-weight: $type-thin;
+    font-family: $headline-font;
+  
+    @media (min-width: #{$screen-md}) {
+      font-size: 1.9rem;
+    }
+  
+    @media (min-width: #{$screen-xl}) {
+      font-size: 2.1rem;
+    }
+  }
+  
+  h5,
+  .h5 {
+   // font-weight: $type-thin;
+    font-size: 1.3rem;
+    font-family: $headline-font;
+  
+    @media (min-width: #{$screen-md}) {
+      font-size: 1.4rem;
+    }
+  
+    @media (min-width: #{$screen-xl}) {
+      font-size: 1.6rem;
+    }
+  }
+  
+  h6,
+  .h6 {
+    // font-weight: $type-thin;
+   // font-weight: $type-thin;
+    font-size: 1.2rem;
+    font-family: $headline-font;
+  
+    @media (min-width: #{$screen-md}) {
+      font-size: 1.3rem;
+    }
+  
+    @media (min-width: #{$screen-xl}) {
+      font-size: 1.5rem;
+    }
+  }
+  
+  .menu-item a {
+    color: var(--black);
+    // font-weight: $type-thin;
+    font-weight: 100;
+    font-size: 1.1rem;
+    font-family: $text-font;
+  
+    @media (min-width: #{$screen-md}) {
+      font-size: 1.2rem;
+    }
+  
+    @media (min-width: #{$screen-xl}) {
+      font-size: 1.4rem;
+    }
+  }
+  
+  p,
+  a {
+    margin-top: 0;
+    color: var(--white);
+    margin-bottom: 1rem;
+    line-height: 1.5;
+    font-weight: 100;
+    font-family: $text-font;
+    font-size: 1.1rem;
+    text-decoration: none;
+    transition: all 0.3s ease-in-out;
+  
+    @media (min-width: #{$screen-sm}) {
+      margin-bottom: 1.5rem;
+      font-size: 1.2rem;
+    }
+  
+    @media (min-width: #{$screen-xl}) {
+      margin-bottom: 2rem;
+      font-size: 1.4rem;
+    }
+  }
+  
+  li {
+    margin-top: 0;
+    color: var(--black);
+    font-weight: $type-thin;
+    margin-bottom: 0.5rem;
+    line-height: 1.5;
+  }
+  
+  .font-bold-title {
+   // font-weight: $type-bold;
+    letter-spacing: 3px;
+  }
+  
+  .uppercase {
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    font-family:  $text-font;
+  }
+  
+  .dmtitle {
+    text-transform: uppercase;
+    letter-spacing: 0.3em;
+  }
+  
+  .italic {
+    font-style: italic;
+  }
+  
+  
+  .top-popup-header, .is_subtitle {
+    font-weight: 300;
+  }
