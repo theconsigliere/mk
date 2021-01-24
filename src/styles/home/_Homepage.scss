@@ -21,17 +21,16 @@ body {
     border: 2px solid var(--white);
     position: relative;
 
-        &:before {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 0;
-            height: 100%;
-            background: var(--white);
-            opacity: 0.1;
-            transition: all 0.4s ease-in;
-            
-        }
+        // &:before {
+        //     position: absolute;
+        //     top: 0;
+        //     left: 0;
+        //     width: 0;
+        //     height: 100%;
+        //     background: var(--white);
+        //     opacity: 0.1;
+        //     transition: all 0.4s ease-in;
+        // }
 
     &:hover {
         background: transparent;
