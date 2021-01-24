@@ -87,6 +87,10 @@ body {
     max-width: 95%;
     margin: 0 auto;
 
+    @media (min-width: #{$screen-xxxl}) {
+        max-width: 90%;
+    }
+
 
     .menu-link {
         margin: 0 1em;
@@ -141,6 +145,10 @@ footer {
     margin: 2em auto;
     max-width: 95%;
     text-align: center;
+
+    @media (min-width: #{$screen-xxxl}) {
+        max-width: 90%;
+    }
 
     p {
         font-size: 1rem;
@@ -303,6 +311,10 @@ footer {
     @media (min-width: #{$screen-lg}) {
         font-size: 11vw;
     }
+
+    @media (min-width: #{$screen-xxxl}) {
+        font-size: 10vw;
+    }
 }
 
 .char {
@@ -322,6 +334,10 @@ footer {
 .hero__grid-wrapper {
     max-width: 95%;
     margin: 0 auto;
+
+    @media (min-width: #{$screen-xxxl}) {
+        max-width: 90%;
+    }
 }
 
 button {
@@ -371,6 +387,10 @@ button {
     @media (min-width: #{$screen-lg}) {
        width: fit-content;
     }
+
+    @media (min-width: #{$screen-xxxl}) {
+        width: 90%;
+    }
 }
 
 // about
@@ -387,6 +407,10 @@ button {
 
     @media (min-width: #{$screen-lg}) {
         font-size: 10vw;
+    }
+
+    @media (min-width: #{$screen-xxxl}) {
+        font-size: 8vw;
     }
 
 }
@@ -424,6 +448,10 @@ button {
         margin: 0 auto;
         grid-row-gap: 0px;
         max-width: 95%;
+    }
+
+    @media (min-width: #{$screen-xxxl}) {
+        max-width: 90%;
     }
     
     
@@ -497,6 +525,10 @@ button {
 
             @media (min-width: #{$screen-lg}) {
                 font-size: 8vw;
+            }
+
+            @media (min-width: #{$screen-xxxl}) {
+                font-size: 6vw;
             }
         }
 
@@ -605,6 +637,10 @@ button {
                         font-size: 5vw;
                         margin-bottom: 0;
                     }
+
+                    @media (min-width: #{$screen-xxxl}) {
+                        font-size: 4vw;
+                    }
                 }
             }
 
@@ -706,6 +742,10 @@ button {
         font-size: 5vw;
     }
 
+    @media (min-width: #{$screen-xxxl}) {
+        font-size: 4vw;
+    }
+
     .word, .dash {
         display: inline;
     }
@@ -742,6 +782,8 @@ button {
             max-width: 80%;
             margin: 0 auto;
         }
+
+       
     }
 
      .c-diamond {
