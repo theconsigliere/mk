@@ -5,6 +5,7 @@ import { gsap, ScrollTrigger } from "gsap/all";
 import "splitting/dist/splitting.css";
 import "splitting/dist/splitting-cells.css";
 import Splitting from "splitting";
+import footerDate from './utils/date';
 
 
 gsap.registerPlugin(ScrollTrigger)
@@ -370,6 +371,7 @@ function init(){
     workItemAnimation()
     skillsAnimation()
     contactAnimation()
+    footerDate()
    
 
 }
