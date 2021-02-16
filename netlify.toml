@@ -2,9 +2,13 @@
   publish = "public"
 
 [[plugins]]
-  package = "netlify-plugin-submit-sitemap"
+package = "@netlify/plugin-sitemap"
+  package = "netlify-plugin-submit-sitemap",
+
 
 	[plugins.inputs]
+
+    buildDir = "dist"
 
 	# The base url of your site (optional, default = main URL set in Netlify)
 	baseUrl = "https://maxwellkirwin.co.uk"
