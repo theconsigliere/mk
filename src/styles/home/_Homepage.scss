@@ -346,12 +346,16 @@ footer {
 }
 
 .hh_title {
-  font-size: 15vw;
+  font-size: 20vw;
   line-height: 0.8;
   margin: 0;
   position: relative;
   overflow: hidden;
   letter-spacing: 0px;
+
+  @media (min-width: #{$screen-sm}) {
+    font-size: 16vw;
+  }
 
   @media (min-width: #{$screen-lg}) {
     font-size: 14vw;
