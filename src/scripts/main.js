@@ -99,15 +99,32 @@ function heroAnimation() {
   // image is set bigger so it scales down on hover
   gsap.set(image, { scale: 1.2 })
   gsap.set(underline, { width: 0, transformOrigin: "start start" })
-  // gsap.set(preloaderLogo, {autoAlpha:0 })
+  gsap.set(preloaderLogo, {
+    // autoAlpha: 0,
+    scale: 0,
+  })
 
   let tl = gsap.timeline({ onComplete: runHero })
 
   tl.to(
     preloaderLogo,
-    { autoAlpha: 1, duration: 0.6, ease: "power4.in" },
+    { autoAlpha: 1, scale: 1, duration: 0.6, ease: "expo.out" },
     0
-  ).to(preloader, { yPercent: -110, duration: 1, ease: "power4.in" }, 1.5)
+  ).to(
+    preloader,
+    {
+      autoAlpha: 0,
+      duration: 1,
+      ease: "power4.in",
+      onComplete: () => {
+        // remove preloader from DOM
+        setTimeout(() => {
+          preloader.parentNode.removeChild(preloader)
+        }, 1000)
+      },
+    },
+    1.5
+  )
 
   function runHero() {
     let timeline = gsap.timeline({
