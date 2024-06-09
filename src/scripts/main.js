@@ -14,27 +14,27 @@ gsap.registerPlugin(ScrollTrigger)
 const images = gsap.utils.toArray(document.querySelectorAll(".wi-item img"))
 let mm = gsap.matchMedia()
 
-mm.add("(min-width: 769px)", () => {
-  const lenis = new Lenis({
-    duration: 1.2,
-    easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-    smoothWheel: true,
-  })
-
-  lenis.on("scroll", (e) => {
-    images.forEach((image) => {
-      image.style.transform = "skewY(" + e.velocity * 0.075 + "deg)"
-    })
-  })
-
-  lenis.on("scroll", ScrollTrigger.update)
-
-  gsap.ticker.add((time) => {
-    lenis.raf(time * 1000)
-  })
-
-  gsap.ticker.lagSmoothing(0)
+const lenis = new Lenis({
+  duration: 1.2,
+  easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+  smoothWheel: true,
 })
+
+// mm.add("(min-width: 769px)", () => {
+lenis.on("scroll", (e) => {
+  images.forEach((image) => {
+    image.style.transform = "skewY(" + e.velocity * 0.075 + "deg)"
+  })
+})
+
+lenis.on("scroll", ScrollTrigger.update)
+
+gsap.ticker.add((time) => {
+  lenis.raf(time * 1000)
+})
+
+gsap.ticker.lagSmoothing(0)
+// })
 
 const circleButton = document.querySelector(".js-circle-button")
 const contactTarget = document.querySelector("#contact-section")
@@ -68,6 +68,7 @@ function heroAnimation() {
 
   const underline = hero.querySelector(".underline")
   // preloader
+
   const preloader = document.querySelector(".preloader")
   const preloaderLogo = preloader.querySelector(".preloader_logo svg")
   const preloaderPaths = gsap.utils.toArray(
@@ -479,20 +480,28 @@ function contactAnimation() {
 }
 
 mm.add("(min-width: 769px)", () => {
-  function init() {
-    Splitting()
-    toggle()
-    noise()
-    heroAnimation()
-    aboutAnimation()
-    recentWorkAnimation()
-    workItemAnimation()
-    skillsAnimation()
-    contactAnimation()
-    footerDate()
-  }
+  // MOBILE
+  console.log("mobile")
+})
 
-  window.addEventListener("load", function () {
-    init()
-  })
+mm.add("(min-width: 769px)", () => {
+  // Desktop
+  console.log("desktop")
+})
+
+function init() {
+  Splitting()
+  toggle()
+  noise()
+  heroAnimation()
+  aboutAnimation()
+  recentWorkAnimation()
+  workItemAnimation()
+  skillsAnimation()
+  contactAnimation()
+  footerDate()
+}
+
+window.addEventListener("load", function () {
+  init()
 })

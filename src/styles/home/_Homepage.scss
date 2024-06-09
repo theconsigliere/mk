@@ -70,6 +70,10 @@ body {
       }
     }
   }
+
+  &.js-hide {
+    display: none;
+  }
 }
 
 // header
