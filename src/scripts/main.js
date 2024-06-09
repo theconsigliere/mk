@@ -1,4 +1,4 @@
-import LocomotiveScroll from "locomotive-scroll"
+import Lenis from "lenis"
 import noise from "./utils/noise"
 import toggle from "./utils/toggle"
 import { gsap, ScrollTrigger } from "gsap/all"
@@ -9,63 +9,37 @@ import footerDate from "./utils/date"
 
 gsap.registerPlugin(ScrollTrigger)
 
-// GSAP + Locomotive scroll
-
-// Locomotive Scroll
-
+// GSAP + Lenis
 // -----------------------------------------------------------------
+const images = gsap.utils.toArray(document.querySelectorAll(".wi-item img"))
 
-const scrollContainer = document.querySelector(".scroll-container")
+const lenis = new Lenis()
 
-// get smoothscroll to start working
-
-const locoScroll = new LocomotiveScroll({
-  el: scrollContainer,
-  smooth: true,
-  getDirection: true,
-  getSpeed: true,
-})
-
-// when we scroll with locomotive scroll update scrolltrigger
-locoScroll.on("scroll", function (event) {
-  ScrollTrigger.update
-
-  const images = gsap.utils.toArray(document.querySelectorAll(".wi-item img"))
-  let speed = event.speed * 0.1
-
+lenis.on("scroll", (e) => {
   images.forEach((image) => {
-    image.style.transform = "skewY(" + speed + "deg)"
-    // console.log(image.style.transform)
+    image.style.transform = "skewY(" + e.velocity * 0.075 + "deg)"
   })
 })
 
-ScrollTrigger.scrollerProxy(scrollContainer, {
-  scrollTop(value) {
-    return arguments.length
-      ? locoScroll.scrollTo(value, 0, 0)
-      : locoScroll.scroll.instance.scroll.y
-  }, // we don't have to define a scrollLeft because we're only scrolling vertically.
-  getBoundingClientRect() {
-    return {
-      top: 0,
-      left: 0,
-      width: window.innerWidth,
-      height: window.innerHeight,
-    }
-  },
+lenis.on("scroll", ScrollTrigger.update)
 
-  // LocomotiveScroll handles things completely differently on mobile devices - it doesn't even transform the container at all! So to get the correct behavior and avoid jitters, we should pin things with position: fixed on mobile. We sense it by checking to see if there's a transform applied to the container (the LocomotiveScroll-controlled element).
-  pinType: scrollContainer.style.transform ? "transform" : "fixed",
+gsap.ticker.add((time) => {
+  lenis.raf(time * 1000)
 })
 
-const circleButton = document.querySelector(".js-circle-button")
+gsap.ticker.lagSmoothing(0)
 
-circleButton.addEventListener("click", function (event) {
+const circleButton = document.querySelector(".js-circle-button")
+const contactTarget = document.querySelector("#contact-section")
+
+circleButton.addEventListener("click", (event) => {
   event.preventDefault()
 
-  const target = document.querySelector("#contact-section")
-
-  locoScroll.scrollTo(target)
+  lenis.scrollTo(contactTarget, {
+    duration: 1.2,
+    offset: -window.innerHeight / 5,
+    // ease: 'power3.inOut'
+  })
 })
 
 function heroAnimation() {
@@ -89,6 +63,9 @@ function heroAnimation() {
   // preloader
   const preloader = document.querySelector(".preloader")
   const preloaderLogo = preloader.querySelector(".preloader_logo svg")
+  const preloaderPaths = gsap.utils.toArray(
+    preloaderLogo.querySelectorAll(".preloader_logo-path")
+  )
 
   gsap.set(heroNameChars, { yPercent: "110", autoAlpha: 0, rotation: -10 })
   gsap.set([subtitle, desc], { yPercent: "110" })
@@ -110,21 +87,29 @@ function heroAnimation() {
     preloaderLogo,
     { autoAlpha: 1, scale: 1, duration: 0.6, ease: "expo.out" },
     0
-  ).to(
-    preloader,
-    {
-      autoAlpha: 0,
-      duration: 1,
-      ease: "power4.in",
-      onComplete: () => {
-        // remove preloader from DOM
-        setTimeout(() => {
-          preloader.parentNode.removeChild(preloader)
-        }, 1000)
-      },
-    },
-    1.5
   )
+    .to(preloader, { backgroundColor: "var(--red)", duration: 0.35 })
+    .to(preloaderPaths, { fill: "var(--black)", duration: 0.35 }, "-=.35")
+    .to(preloader, { backgroundColor: "var(--yellow)", duration: 0.35 })
+    .to(preloaderPaths, { fill: "var(--black)", duration: 0.35 }, "-=.35")
+    .to(preloader, { backgroundColor: "var(--purple)", duration: 0.35 })
+    .to(preloaderPaths, { fill: "var(--white)", duration: 0.35 }, "-=.35")
+    .to(preloader, { backgroundColor: "var(--black)", duration: 0.35 })
+    .to(
+      preloader,
+      {
+        autoAlpha: 0,
+        duration: 1,
+        ease: "power4.in",
+        onComplete: () => {
+          // remove preloader from DOM
+          setTimeout(() => {
+            preloader.parentNode.removeChild(preloader)
+          }, 1000)
+        },
+      },
+      1.5
+    )
 
   function runHero() {
     let timeline = gsap.timeline({
@@ -136,7 +121,7 @@ function heroAnimation() {
       scrollTrigger: {
         trigger: hero,
         start: "center bottom",
-        scroller: scrollContainer,
+        //  scroller: scrollContainer,
         //  end:"bottom bottom",
         //   markers: true
       },
@@ -219,7 +204,7 @@ function aboutAnimation() {
     scrollTrigger: {
       trigger: about,
       start: "top bottom",
-      scroller: scrollContainer,
+      //  scroller: scrollContainer,
       //  toggleActions:"play pause restart reset",
       //  end:"bottom bottom",
       //  markers: true
@@ -283,7 +268,7 @@ function recentWorkAnimation() {
     scrollTrigger: {
       trigger: rw,
       start: "center bottom",
-      scroller: scrollContainer,
+      //  scroller: scrollContainer,
       //  toggleActions:"play pause restart reset",
       //  end:"bottom bottom",
       //  markers: true
@@ -342,7 +327,7 @@ function workItemAnimation() {
       scrollTrigger: {
         trigger: item,
         start: "center bottom",
-        scroller: scrollContainer,
+        //  scroller: scrollContainer,
         //  toggleActions:"play pause restart reset",
         //  end:"bottom bottom",
         //  markers: true,
@@ -418,7 +403,7 @@ function skillsAnimation() {
     scrollTrigger: {
       trigger: skill,
       start: "center bottom",
-      scroller: scrollContainer,
+      //  scroller: scrollContainer,
       //  toggleActions:"play pause restart reset",
       //  end:"bottom bottom",
       //  markers: true
@@ -455,7 +440,7 @@ function contactAnimation() {
     scrollTrigger: {
       trigger: contact,
       start: "center bottom",
-      scroller: scrollContainer,
+      //  scroller: scrollContainer,
       //  toggleActions:"play pause restart reset",
       //  end:"bottom bottom",
       // markers: true
@@ -495,9 +480,3 @@ function init() {
 window.addEventListener("load", function () {
   init()
 })
-
-// each time the window updates, we should refresh ScrollTrigger and then update LocomotiveScroll.
-ScrollTrigger.addEventListener("refresh", () => locoScroll.update())
-
-// after everything is set up, refresh() ScrollTrigger and update LocomotiveScroll because padding may have been added for pinning, etc.
-ScrollTrigger.refresh()

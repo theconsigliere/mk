@@ -1,0 +1,56 @@
+.canvas-cover {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background-image: linear-gradient(
+    125deg,
+    hsl(0deg 0% 11%) 0%,
+    hsl(210deg 4% 11%) 5%,
+    hsl(210deg 7% 11%) 12%,
+    hsl(195deg 7% 11%) 23%,
+    hsl(200deg 11% 11%) 39%,
+    hsl(240deg 23% 17%) 59%,
+    hsl(280deg 36% 23%) 77%,
+    hsl(320deg 49% 30%) 90%,
+    hsl(0deg 62% 36%) 100%
+  );
+  z-index: -1;
+}
+
+.dark-mode {
+  background-image: linear-gradient(
+    125deg,
+    hsl(0deg 0% 11%) 0%,
+    hsl(210deg 4% 11%) 5%,
+    hsl(210deg 7% 11%) 12%,
+    hsl(195deg 7% 11%) 23%,
+    hsl(200deg 11% 11%) 39%,
+    hsl(240deg 23% 17%) 59%,
+    hsl(280deg 36% 23%) 77%,
+    hsl(320deg 49% 30%) 90%,
+    hsl(0deg 62% 36%) 100%
+  );
+  opacity: 0.85;
+  mix-blend-mode: difference;
+}
+
+.light-mode {
+  background-image: linear-gradient(
+    125deg,
+    hsl(46deg 100% 97%) 0%,
+    hsl(46deg 100% 97%) 11%,
+    hsl(46deg 100% 97%) 21%,
+    hsl(46deg 100% 97%) 32%,
+    hsl(46deg 100% 97%) 43%,
+    hsl(46deg 100% 97%) 53%,
+    hsl(46deg 100% 97%) 63%,
+    hsl(28deg 94% 94%) 72%,
+    hsl(8deg 92% 90%) 81%,
+    hsl(350deg 91% 87%) 88%,
+    hsl(331deg 86% 83%) 93%,
+    hsl(312deg 83% 79%) 97%,
+    hsl(294deg 81% 76%) 100%
+  );
+  opacity: 0.95;
+  mix-blend-mode: multiply;
+}

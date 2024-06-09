@@ -1,6 +1,9 @@
 :root {
   --black: #191919;
   --white: #fffcf2;
+  --red: #942323;
+  --purple: #e98ff3;
+  --yellow: #e4cd5d;
 }
 
 body {
@@ -17,6 +20,7 @@ body {
   display: inline-block;
   border: 2px solid var(--white);
   position: relative;
+  cursor: pointer;
 
   // &:before {
   //     position: absolute;
