@@ -12,22 +12,29 @@ gsap.registerPlugin(ScrollTrigger)
 // GSAP + Lenis
 // -----------------------------------------------------------------
 const images = gsap.utils.toArray(document.querySelectorAll(".wi-item img"))
+let mm = gsap.matchMedia()
 
-const lenis = new Lenis()
-
-lenis.on("scroll", (e) => {
-  images.forEach((image) => {
-    image.style.transform = "skewY(" + e.velocity * 0.075 + "deg)"
+mm.add("(min-width: 769px)", () => {
+  const lenis = new Lenis({
+    duration: 1.2,
+    easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+    smoothWheel: true,
   })
+
+  lenis.on("scroll", (e) => {
+    images.forEach((image) => {
+      image.style.transform = "skewY(" + e.velocity * 0.075 + "deg)"
+    })
+  })
+
+  lenis.on("scroll", ScrollTrigger.update)
+
+  gsap.ticker.add((time) => {
+    lenis.raf(time * 1000)
+  })
+
+  gsap.ticker.lagSmoothing(0)
 })
-
-lenis.on("scroll", ScrollTrigger.update)
-
-gsap.ticker.add((time) => {
-  lenis.raf(time * 1000)
-})
-
-gsap.ticker.lagSmoothing(0)
 
 const circleButton = document.querySelector(".js-circle-button")
 const contactTarget = document.querySelector("#contact-section")
@@ -131,46 +138,51 @@ function heroAnimation() {
       .to(
         heroNameChars,
         {
-          duration: 1.4,
-          ease: "power4.out",
+          duration: 1.2,
+          ease: "expo.out",
           yPercent: 0,
           autoAlpha: 1,
-          stagger: 0.1,
+          stagger: 0.05,
           rotation: 0,
         },
         0
       )
       .to(
-        button,
-        {
-          rotation: 360 * 5,
-          duration: 1,
-          ease: "none",
-          scrollTrigger: { scrub: true },
-        },
-        0
-      )
-      .to(
         [subtitle, desc],
-        { duration: 0.8, ease: "expo.in", yPercent: 0, stagger: 0.1 },
+        { duration: 0.6, ease: "expo.in", yPercent: 0, stagger: 0.1 },
         0.2
       )
-      .to([mask, imageBlock], { xPercent: 0, duration: 1.2 }, 0.8)
-      .to(image, { duration: 2.5, scale: 1 }, 1.1)
-      .to(logo, { yPercent: 0, autoAlpha: 1, duration: 0.8 }, 0.6)
+      .to([mask, imageBlock], { xPercent: 0, duration: 0.9 }, 0.6)
+      .to(image, { duration: 1.25, scale: 1 }, 0.2)
+      .to(logo, { yPercent: 0, autoAlpha: 1, duration: 0.6 }, 0.4)
       .to(
         menuLinks,
         {
           yPercent: 0,
           autoAlpha: 1,
-          ease: "expo.in",
-          duration: 0.8,
-          stagger: 0.2,
+          ease: "expo.out",
+          duration: 0.9,
+          stagger: 0.1,
         },
-        0.6
+        0.2
       )
-      .to(button, { rotation: 0, duration: 0.6, autoAlpha: 1 }, 1.8)
+      .to(button, { duration: 0.4, autoAlpha: 1 }, 1)
       .to(underline, { width: "100%", duration: 1.2 }, 1.1)
+
+    // button on scroll
+
+    gsap.to(
+      button,
+      {
+        rotation: 360 * 5,
+        // duration: 1,
+        ease: "none",
+        scrollTrigger: {
+          scrub: true,
+        },
+      },
+      0
+    )
   }
 }
 
@@ -203,11 +215,11 @@ function aboutAnimation() {
     // add scrolltrigger to timelinex
     scrollTrigger: {
       trigger: about,
-      start: "top bottom",
+      start: "top bottom-=20%",
       //  scroller: scrollContainer,
       //  toggleActions:"play pause restart reset",
       //  end:"bottom bottom",
-      //  markers: true
+      //  markers: true,
     },
   })
 
@@ -215,29 +227,29 @@ function aboutAnimation() {
     .to(
       aboutNameChars,
       {
-        duration: 2.5,
-        ease: "power4.out",
+        duration: 1.25,
+        ease: "expo.out",
         yPercent: 0,
         autoAlpha: 1,
-        stagger: 0.1,
+        stagger: 0.05,
         rotation: 0,
       },
       0
     )
-    .to([mask, imageBlock], { xPercent: 0, duration: 1.2 }, 1.2)
+    .to([mask, imageBlock], { xPercent: 0, duration: 1 }, 0.9)
     .to(
       shape,
-      { rotation: 0, duration: 1.2, autoAlpha: 1, ease: "back(1.7).inout" },
-      1.2
+      { rotation: 0, duration: 1, autoAlpha: 1, ease: "back(1.7).inout" },
+      0.9
     )
     .to(image, { duration: 2.5, scale: 1 }, 1.5)
     .to(
       [subtitle, desc],
       {
         yPercent: 0,
-        duration: 1.5,
+        duration: 1,
         ease: "power4.in",
-        stagger: 0.2,
+        stagger: 0.1,
         autoAlpha: 1,
       },
       0
@@ -267,7 +279,7 @@ function recentWorkAnimation() {
     // add scrolltrigger to timelinex
     scrollTrigger: {
       trigger: rw,
-      start: "center bottom",
+      start: "top bottom-=20%",
       //  scroller: scrollContainer,
       //  toggleActions:"play pause restart reset",
       //  end:"bottom bottom",
@@ -279,18 +291,18 @@ function recentWorkAnimation() {
     .to(
       rwChars,
       {
-        duration: 2.5,
-        ease: "power4.out",
+        duration: 1.25,
+        ease: "expo.out",
         yPercent: 0,
         autoAlpha: 1,
-        stagger: 0.1,
+        stagger: 0.05,
         rotation: 0,
       },
       0
     )
     .to(desc, { yPercent: 0, autoAlpha: 1 }, 0.2)
     .to(shape, { rotation: 0, autoAlpha: 1 }, 0.6)
-    .to(underline, { width: "100%", duration: 1.2 }, 0.8)
+    .to(underline, { width: "100%", duration: 1.2 }, 0.6)
 }
 
 function workItemAnimation() {
@@ -320,13 +332,13 @@ function workItemAnimation() {
     let timeline = gsap.timeline({
       defaults: {
         //  ease: "back.inOut(1.7)"
-        ease: "power4.out",
+        ease: "expo.out",
         duration: 0.6,
       },
       // add scrolltrigger to timelinex
       scrollTrigger: {
         trigger: item,
-        start: "center bottom",
+        start: "top bottom-=20%",
         //  scroller: scrollContainer,
         //  toggleActions:"play pause restart reset",
         //  end:"bottom bottom",
@@ -338,14 +350,13 @@ function workItemAnimation() {
       .to(
         wiChars,
         {
-          duration: 2.5,
-          ease: "power4.out",
+          duration: 0.75,
           yPercent: 0,
           autoAlpha: 1,
-          stagger: 0.1,
+          stagger: 0.025,
           rotation: 0,
         },
-        0
+        0.1
       )
       .to(
         image,
@@ -371,11 +382,11 @@ function workItemAnimation() {
             }
           },
         },
-        0.6
+        0.2
       )
       .to(
         [desc, circles, button],
-        { yPercent: 0, autoAlpha: 1, stagger: 0.1 },
+        { yPercent: 0, autoAlpha: 1, duration: 0.4, stagger: 0.05 },
         0
       )
   })
@@ -396,13 +407,13 @@ function skillsAnimation() {
   let timeline = gsap.timeline({
     defaults: {
       //  ease: "back.inOut(1.7)"
-      ease: "power4.out",
+      ease: "expo.out",
       duration: 0.6,
     },
     // add scrolltrigger to timelinex
     scrollTrigger: {
       trigger: skill,
-      start: "center bottom",
+      start: "top bottom-=20%",
       //  scroller: scrollContainer,
       //  toggleActions:"play pause restart reset",
       //  end:"bottom bottom",
@@ -413,7 +424,11 @@ function skillsAnimation() {
   timeline
     .to(header, { yPercent: 0, duration: 1.2, autoAlpha: 1 }, 0)
     .to(underline, { width: "100%", duration: 1.2 }, 0)
-    .to(wordsDashs, { yPercent: 0, autoAlpha: 1, stagger: 0.1 }, 0)
+    .to(
+      wordsDashs,
+      { yPercent: 0, autoAlpha: 1, stagger: 0.05, duration: 1 },
+      0
+    )
 }
 
 function contactAnimation() {
@@ -433,13 +448,13 @@ function contactAnimation() {
   let timeline = gsap.timeline({
     defaults: {
       //  ease: "back.inOut(1.7)"
-      ease: "power4.in",
+      ease: "expo.out",
       duration: 0.6,
     },
     // add scrolltrigger to timelinex
     scrollTrigger: {
       trigger: contact,
-      start: "center bottom",
+      start: "top bottom-=20%",
       //  scroller: scrollContainer,
       //  toggleActions:"play pause restart reset",
       //  end:"bottom bottom",
@@ -451,11 +466,10 @@ function contactAnimation() {
     .to(
       chChars,
       {
-        duration: 2.5,
-        ease: "power4.out",
+        duration: 1.25,
         yPercent: 0,
         autoAlpha: 1,
-        stagger: 0.1,
+        stagger: 0.05,
         rotation: 0,
       },
       0
@@ -464,19 +478,21 @@ function contactAnimation() {
     .to(desc, { yPercent: 0, autoAlpha: 1, duration: 0.8, stagger: 0.1 }, 0.6)
 }
 
-function init() {
-  Splitting()
-  toggle()
-  noise()
-  heroAnimation()
-  aboutAnimation()
-  recentWorkAnimation()
-  workItemAnimation()
-  skillsAnimation()
-  contactAnimation()
-  footerDate()
-}
+mm.add("(min-width: 769px)", () => {
+  function init() {
+    Splitting()
+    toggle()
+    noise()
+    heroAnimation()
+    aboutAnimation()
+    recentWorkAnimation()
+    workItemAnimation()
+    skillsAnimation()
+    contactAnimation()
+    footerDate()
+  }
 
-window.addEventListener("load", function () {
-  init()
+  window.addEventListener("load", function () {
+    init()
+  })
 })
