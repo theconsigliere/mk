@@ -649,6 +649,7 @@ button {
 
     .wi-item {
       width: 100%;
+      position: relative;
 
       @media (min-width: #{$screen-lg}) {
         width: 50%;
@@ -858,6 +859,7 @@ button {
       width: 0;
       height: 2px;
       transform: translateY(-50%);
+      transition: all 0.35s ease-in-out;
       background: var(--white);
     }
   }
