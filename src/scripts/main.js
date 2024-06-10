@@ -22,8 +22,10 @@ const lenis = new Lenis({
 
 // mm.add("(min-width: 769px)", () => {
 lenis.on("scroll", (e) => {
-  images.forEach((image) => {
-    image.style.transform = "skewY(" + e.velocity * 0.075 + "deg)"
+  mm.add("(min-width: 769px)", () => {
+    images.forEach((image) => {
+      image.style.transform = "skewY(" + e.velocity * 0.075 + "deg)"
+    })
   })
 })
 
