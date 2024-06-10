@@ -30,7 +30,7 @@ export default function toggle() {
         canvas.style.opacity = "0.05"
       }, 500)
 
-      grids.forEach((grid) => (grid.style.borderColor = "#1d1c1c40"))
+      // grids.forEach((grid) => (grid.style.borderColor = "#1d1c1c40"))
 
       // set item of light to local storage
       localStorage.setItem("mode", "light")
@@ -49,7 +49,7 @@ export default function toggle() {
         canvas.style.opacity = "1"
       }, 500)
 
-      grids.forEach((grid) => (grid.style.borderColor = "#1d1c1c"))
+      // grids.forEach((grid) => (grid.style.borderColor = "#1d1c1c"))
 
       // set item of light to local storage
       localStorage.setItem("mode", "dark")

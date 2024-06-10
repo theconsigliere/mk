@@ -155,22 +155,22 @@ function heroAnimation() {
         { duration: 0.6, ease: "expo.in", yPercent: 0, stagger: 0.1 },
         0.2
       )
-      .to([mask, imageBlock], { xPercent: 0, duration: 0.9 }, 0.6)
+      .to([mask, imageBlock], { xPercent: 0, duration: 0.9 }, 0.2)
       .to(image, { duration: 1.25, scale: 1 }, 0.2)
-      .to(logo, { yPercent: 0, autoAlpha: 1, duration: 0.6 }, 0.4)
+      .to(logo, { yPercent: 0, autoAlpha: 1, duration: 0.6 }, 0.2)
       .to(
         menuLinks,
         {
           yPercent: 0,
           autoAlpha: 1,
           ease: "expo.out",
-          duration: 0.9,
+          duration: 0.5,
           stagger: 0.1,
         },
         0.2
       )
-      .to(button, { duration: 0.4, autoAlpha: 1 }, 1)
-      .to(underline, { width: "100%", duration: 1.2 }, 1.1)
+      .to(button, { duration: 0.4, autoAlpha: 1 }, 0.6)
+      .to(underline, { width: "100%", duration: 1.2 }, 0.8)
 
     // button on scroll
 
@@ -230,7 +230,7 @@ function aboutAnimation() {
     .to(
       aboutNameChars,
       {
-        duration: 1.25,
+        duration: 0.75,
         ease: "expo.out",
         yPercent: 0,
         autoAlpha: 1,
@@ -239,18 +239,18 @@ function aboutAnimation() {
       },
       0
     )
-    .to([mask, imageBlock], { xPercent: 0, duration: 1 }, 0.6)
+    .to([mask, imageBlock], { xPercent: 0, duration: 1 }, 0.2)
     .to(
       shape,
       { rotation: 0, duration: 1, autoAlpha: 1, ease: "back(1.7).inout" },
-      0.6
+      0.2
     )
-    .to(image, { duration: 2.5, scale: 1 }, 1)
+    .to(image, { duration: 2.5, scale: 1 }, 0.4)
     .to(
       [subtitle, desc],
       {
         yPercent: 0,
-        duration: 1,
+        duration: 0.5,
         ease: "power4.in",
         stagger: 0.1,
         autoAlpha: 1,
@@ -279,7 +279,7 @@ function recentWorkAnimation() {
       ease: "power4.out",
       duration: 0.6,
     },
-    // add scrolltrigger to timelinex
+    // add scrolltrigger to timeline
     scrollTrigger: {
       trigger: rw,
       start: "top bottom-=20%",
@@ -326,11 +326,10 @@ function workItemAnimation() {
 
     // set default position
     gsap.set(wiChars, { yPercent: 110, autoAlpha: 0, rotation: -10 })
-    gsap.set([image, desc, button, circles], { yPercent: 10, autoAlpha: 0 })
+    gsap.set([desc, button, circles], { autoAlpha: 0 })
+    gsap.set(image, { scale: 1.2, autoAlpha: 0 })
 
-    if (designBadges) {
-      gsap.set(designBadges, { yPercent: 10, autoAlpha: 0 })
-    }
+    if (designBadges) gsap.set(designBadges, { yPercent: 5, autoAlpha: 0 })
 
     let timeline = gsap.timeline({
       defaults: {
@@ -364,9 +363,17 @@ function workItemAnimation() {
       .to(
         image,
         {
-          yPercent: 0,
-          duration: 1,
+          duration: 0.4,
           autoAlpha: 1,
+          ease: "expo.out",
+        },
+        0
+      )
+      .to(
+        image,
+        {
+          duration: 0.6,
+          scale: 1,
           onComplete: () => {
             if (designBadges) {
               designBadges.forEach((badge) => {
@@ -389,7 +396,7 @@ function workItemAnimation() {
       )
       .to(
         [desc, circles, button],
-        { yPercent: 0, autoAlpha: 1, duration: 0.5, stagger: 0.05 },
+        { autoAlpha: 1, duration: 0.5, stagger: 0.05 },
         0
       )
   })
