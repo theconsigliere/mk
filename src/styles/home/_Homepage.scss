@@ -343,8 +343,8 @@ footer {
   }
 
   @media (min-width: #{$screen-lg}) {
-    padding-top: 2em;
     max-width: 90%;
+    padding-top: 0.5rem;
     margin: 0 auto;
   }
 
@@ -371,6 +371,10 @@ footer {
 
   @media (min-width: #{$screen-xxxl}) {
     font-size: 14vw;
+  }
+
+  span.word {
+    line-height: 1;
   }
 }
 

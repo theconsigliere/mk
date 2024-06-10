@@ -237,13 +237,13 @@ function aboutAnimation() {
       },
       0
     )
-    .to([mask, imageBlock], { xPercent: 0, duration: 1 }, 0.9)
+    .to([mask, imageBlock], { xPercent: 0, duration: 1 }, 0.6)
     .to(
       shape,
       { rotation: 0, duration: 1, autoAlpha: 1, ease: "back(1.7).inout" },
-      0.9
+      0.6
     )
-    .to(image, { duration: 2.5, scale: 1 }, 1.5)
+    .to(image, { duration: 2.5, scale: 1 }, 1)
     .to(
       [subtitle, desc],
       {
@@ -318,7 +318,7 @@ function workItemAnimation() {
     const image = item.querySelector(".about__image")
     const circles = gsap.utils.toArray(item.querySelectorAll(".circle"))
     const button = item.querySelector(".block-button")
-    const designBadges = [...item.querySelectorAll(".css-design-badge")]
+    const designBadges = [...item.querySelectorAll(".js-design-badge")]
 
     //  console.log(wiChars)
 
