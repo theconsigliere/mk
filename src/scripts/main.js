@@ -269,7 +269,7 @@ function recentWorkAnimation() {
   const shape = rw.querySelector(".rw_shape-box")
 
   gsap.set(rwChars, { yPercent: 110, autoAlpha: 0, rotation: -10 })
-  gsap.set(desc, { yPercent: 10, autoAlpha: 0 })
+  gsap.set(desc, { yPercent: 5, autoAlpha: 0 })
   gsap.set(underline, { width: 0, transformOrigin: "start start" })
   gsap.set(shape, { rotation: -5, autoAlpha: 0 })
 
@@ -277,7 +277,7 @@ function recentWorkAnimation() {
     defaults: {
       //  ease: "back.inOut(1.7)"
       ease: "power4.out",
-      duration: 0.8,
+      duration: 0.6,
     },
     // add scrolltrigger to timelinex
     scrollTrigger: {
@@ -304,8 +304,8 @@ function recentWorkAnimation() {
       0
     )
     .to(desc, { yPercent: 0, autoAlpha: 1 }, 0.2)
-    .to(shape, { rotation: 0, autoAlpha: 1 }, 0.6)
-    .to(underline, { width: "100%", duration: 1.2 }, 0.6)
+    .to(shape, { rotation: 0, autoAlpha: 1 }, 0.4)
+    .to(underline, { width: "100%", duration: 1.2 }, 0.4)
 }
 
 function workItemAnimation() {
@@ -374,12 +374,12 @@ function workItemAnimation() {
                   badge,
                   {
                     yPercent: 0,
-                    duration: 0.8,
-                    stagger: 0.3,
+                    duration: 0.6,
+                    stagger: 0.1,
                     ease: "expo.in",
                     autoAlpha: 1,
                   },
-                  0.6
+                  0.3
                 )
               })
             }
@@ -389,7 +389,7 @@ function workItemAnimation() {
       )
       .to(
         [desc, circles, button],
-        { yPercent: 0, autoAlpha: 1, duration: 0.4, stagger: 0.05 },
+        { yPercent: 0, autoAlpha: 1, duration: 0.5, stagger: 0.05 },
         0
       )
   })
@@ -483,12 +483,12 @@ function contactAnimation() {
 
 mm.add("(min-width: 769px)", () => {
   // MOBILE
-  console.log("mobile")
+  // console.log("mobile")
 })
 
 mm.add("(min-width: 769px)", () => {
   // Desktop
-  console.log("desktop")
+  //console.log("desktop")
 })
 
 function init() {
