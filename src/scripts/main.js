@@ -11,7 +11,9 @@ gsap.registerPlugin(ScrollTrigger)
 
 // GSAP + Lenis
 // -----------------------------------------------------------------
-const images = gsap.utils.toArray(document.querySelectorAll(".wi-item img"))
+const imagegroups = gsap.utils.toArray(
+  document.querySelectorAll(".wi-item-main-image-group")
+)
 let mm = gsap.matchMedia()
 
 const lenis = new Lenis({
@@ -23,7 +25,7 @@ const lenis = new Lenis({
 // mm.add("(min-width: 769px)", () => {
 lenis.on("scroll", (e) => {
   mm.add("(min-width: 769px)", () => {
-    images.forEach((image) => {
+    imagegroups.forEach((image) => {
       image.style.transform = "skewY(" + e.velocity * 0.075 + "deg)"
     })
   })
@@ -363,7 +365,7 @@ function workItemAnimation() {
       .to(
         image,
         {
-          duration: 0.4,
+          duration: 0.6,
           autoAlpha: 1,
           ease: "expo.out",
         },
