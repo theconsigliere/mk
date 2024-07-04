@@ -500,6 +500,31 @@ mm.add("(min-width: 769px)", () => {
   //console.log("desktop")
 })
 
+function browserTab() {
+  const pageTitle = document.title
+  const attentionMessage = "👋 Hey, come back!"
+  let blinkEvent = null
+
+  document.addEventListener("visibilitychange", function (e) {
+    let isPageActive = !document.hidden
+
+    if (!isPageActive) {
+      blink()
+    } else {
+      document.title = pageTitle
+      clearInterval(blinkEvent)
+    }
+  })
+
+  function blink() {
+    blinkEvent = setInterval(function () {
+      document.title === attentionMessage
+        ? (document.title = pageTitle)
+        : (document.title = attentionMessage)
+    }, 1000)
+  }
+}
+
 function init() {
   Splitting()
   toggle()
@@ -511,6 +536,7 @@ function init() {
   skillsAnimation()
   contactAnimation()
   footerDate()
+  browserTab()
 }
 
 window.addEventListener("load", function () {
