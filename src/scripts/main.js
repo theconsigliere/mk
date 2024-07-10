@@ -152,11 +152,7 @@ function heroAnimation() {
         },
         0
       )
-      .to(
-        [subtitle, desc],
-        { duration: 0.6, ease: "expo.in", yPercent: 0, stagger: 0.1 },
-        0.2
-      )
+      .to([subtitle, desc], { duration: 0.85, yPercent: 0, stagger: 0.1 }, 0)
       .to([mask, imageBlock], { xPercent: 0, duration: 0.9 }, 0.2)
       .to(image, { duration: 1.25, scale: 1 }, 0.2)
       .to(logo, { yPercent: 0, autoAlpha: 1, duration: 0.6 }, 0.2)
